@@ -64,3 +64,35 @@ class QueryTokenizer():
             return batches
 
         return ids, mask
+
+    # def tensorize(self, batch_text, bsize=None):
+    #     assert type(batch_text) in [list, tuple], (type(batch_text))
+
+    #     # add placehold for the [Q] marker
+    #     batch_text = ['. ' + x for x in batch_text]
+
+    #     obj = self.tok(batch_text, padding='max_length', truncation=True,
+    #                    return_tensors='pt', max_length=self.query_maxlen)
+
+    #     ids, mask = obj['input_ids'], obj['attention_mask']
+        
+    #     ### ADDED ramraj
+    #     token_type_ids = obj["token_type_ids"]
+    #     # fix broken token type id for XLMR
+    #     if token_type_ids[0].sum()==0:
+    #         token_type_ids = (ids == self.tok.eos_token_id)
+    #         token_type_ids = token_type_ids.cumsum(1)
+    #         token_type_ids = (token_type_ids < 2).to(token_type_ids.dtype)
+    #         #token_type_ids = (token_type_ids==2) & ~(special_tokens_mask)
+    #     mask = (mask == 1) & (token_type_ids == 1)
+
+    #     # postprocess for the [Q] marker and the [MASK] augmentation
+    #     ids[:, 1] = self.Q_marker_token_id
+    #     ids[ids == 1] = self.mask_token_id
+
+    #     if bsize:
+    #         batches = _split_into_batches(ids, mask, bsize)
+    #         return batches
+
+    #     return ids, mask
+

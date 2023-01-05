@@ -86,6 +86,7 @@ class LazyBatcher():
         for position in range(offset, endpos):
             query, pos, neg = self.triples[position]
             query, pos, neg = self.queries[query], self.collection[pos], self.collection[neg]
+            query = query.split(' [SEP] ') ## ADDED ramraj
 
             queries.append(query)
             positives.append(pos)

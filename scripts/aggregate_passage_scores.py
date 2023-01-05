@@ -15,8 +15,8 @@ if __name__ == "__main__":
     mapping_dict = {}
     with open(args.mapping) as f:
         for line in f:
-           map_id, pass_id = line.strip().split("\t")
-           mapping_dict[map_id] = pass_id
+            map_id, pass_id = line.strip().split("\t")
+            mapping_dict[map_id] = pass_id
 
     qry_map_dict = {}
     if args.qry_map:
@@ -55,5 +55,6 @@ if __name__ == "__main__":
     with open(fname, "w") as f:
         for qid, doc_list in agg_dict.items():
             for rank, doc_id in enumerate(doc_list, start=1):
-                f.write(f"{qid}\tQ0\t{doc_id}\t{rank}\t{seen_pairs[(qid,doc_id)]}\tColXLMR\n")
+                #f.write(f"{qid}\tQ0\t{doc_id}\t{rank}\t{seen_pairs[(qid,doc_id)]}\tColXLMR\n")
+                f.write(f"{qid}\tQ0\t{doc_id}\t{rank}\t{1001-rank}\tColXLMR\n")
 
