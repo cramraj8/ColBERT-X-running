@@ -83,7 +83,7 @@ class Logger():
         with open(path, 'w') as f:
             f.write(content)
 
-        mlflow.log_artifact(path)
+        #mlflow.log_artifact(path)
 
     def warn(self, *args):
         msg = print_message('[WARNING]', '\t', *args)
